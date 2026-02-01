@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Walentynka 💖</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #ffe6eb;
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 80px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+#tak {
+    background: #ff4d6d;
+    color: white;
+    left: 40%;
+    top: 55%;
+}
+
+#nie {
+    background: #ccc;
+    left: 55%;
+    top: 55%;
+}
+</style>
+</head>
+<body>
+
+<h1>Czy zostaniesz moją walentynką? 💘</h1>
+
+<button id="tak" onclick="alert('Yaaay! 💖')">Tak</button>
+<button id="nie">Nie</button>
+
+<script>
+const nie = document.getElementById("nie");
+
+function uciekaj() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    nie.style.left = x + "px";
+    nie.style.top = y + "px";
+}
+
+nie.addEventListener("mouseover", uciekaj);
+nie.addEventListener("touchstart", uciekaj);
+</script>
+
+</body>
+</html>
 
