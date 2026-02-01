@@ -41,20 +41,28 @@ button {
 }
 
 #loveText {
-    display: none;
+    display: none; /* niewidoczne na początku */
     font-size: 24px;
     color: #ff4d6d;
     margin-top: 30px;
     padding: 20px;
     border-radius: 20px;
     background: rgba(255, 77, 109, 0.1);
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0; /* startowa przezroczystość */
+    transform: translateY(20px); /* startowe przesunięcie w dół */
+    transition: opacity 1s ease, transform 1s ease; /* animacja wypływania */
+}
+
+#loveText.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0); /* efekt wypływania w górę */
 }
 
 #loveText img {
@@ -123,7 +131,10 @@ function startHearts() {
 }
 
 tak.addEventListener("click", () => {
-    loveText.style.display = "flex"; // pokazujemy wiadomość
+    // pokazujemy GIF i napis z animacją fade-in
+    loveText.style.display = "flex"; // konieczne do flex
+    setTimeout(() => loveText.classList.add("show"), 10); // dodajemy klasę, aby zadziałała animacja
+
     startHearts();
 
     // ukrycie przycisków
@@ -139,3 +150,4 @@ tak.addEventListener("click", () => {
 
 </body>
 </html>
+
