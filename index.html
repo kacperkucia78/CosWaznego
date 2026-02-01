@@ -24,7 +24,7 @@ button {
     border: none;
     cursor: pointer;
     position: absolute;
-    transition: opacity 1s;
+    transition: opacity 0.5s;
 }
 
 #tak {
@@ -42,9 +42,25 @@ button {
 
 #loveText {
     display: none;
-    font-size: 28px;
+    font-size: 24px;
     color: #ff4d6d;
     margin-top: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 77, 109, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#loveText img {
+    width: 150px;
+    height: auto;
+    border-radius: 15px;
 }
 
 .heart {
@@ -68,8 +84,9 @@ button {
 <body>
 
 <h1>Czy zostaniesz moją walentynką? 💘</h1>
-<div id="loveText">JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEJ KOCHAM CIE DZIEKUJEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ❤️
-   <img src="https://cdn.7tv.app/emote/01FQCWA0QR0003G1NQB42Z1D1E/4x.gif">;
+<div id="loveText">
+    JEEEEEEEEEE! KOCHAM CIĘ ❤️ DZIĘKUJĘ! 
+    <img src="https://cdn.7tv.app/emote/01FQCWA0QR0003G1NQB42Z1D1E/4x.gif" alt="GIF Walentynka">
 </div>
 <button id="tak">Tak</button>
 <button id="nie">Nie</button>
@@ -106,15 +123,20 @@ function startHearts() {
 }
 
 tak.addEventListener("click", () => {
-    loveText.style.display = "block";
+    loveText.style.display = "flex"; // pokazujemy wiadomość
     startHearts();
 
+    // ukrycie przycisków
+    tak.style.opacity = "0";
+    nie.style.opacity = "0";
+
     setTimeout(() => {
-        nie.style.opacity = "0";
-        setTimeout(() => nie.remove(), 1000);
-    }, 3000);
+        tak.remove();
+        nie.remove();
+    }, 500); // po animacji opacity
 });
 </script>
 
 </body>
 </html>
+
