@@ -24,6 +24,7 @@ button {
     border: none;
     cursor: pointer;
     position: absolute;
+    transition: opacity 1s;
 }
 
 #tak {
@@ -48,17 +49,16 @@ button {
 
 .heart {
     position: absolute;
-    font-size: 24px;
     animation: fly 5s linear forwards;
     pointer-events: none;
 }
 
 @keyframes fly {
-    0% {
+    from {
         transform: translateY(0) scale(1);
         opacity: 1;
     }
-    100% {
+    to {
         transform: translateY(-700px) scale(2);
         opacity: 0;
     }
@@ -92,7 +92,6 @@ let heartsInterval = null;
 
 function startHearts() {
     if (heartsInterval) return;
-
     heartsInterval = setInterval(() => {
         const heart = document.createElement("div");
         heart.className = "heart";
@@ -100,9 +99,7 @@ function startHearts() {
         heart.style.left = Math.random() * window.innerWidth + "px";
         heart.style.bottom = "-30px";
         heart.style.fontSize = (20 + Math.random() * 20) + "px";
-
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 5000);
     }, 200);
 }
@@ -110,9 +107,13 @@ function startHearts() {
 tak.addEventListener("click", () => {
     loveText.style.display = "block";
     startHearts();
+
+    setTimeout(() => {
+        nie.style.opacity = "0";
+        setTimeout(() => nie.remove(), 1000);
+    }, 3000);
 });
 </script>
 
 </body>
 </html>
-
